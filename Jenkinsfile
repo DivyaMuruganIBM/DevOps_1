@@ -14,12 +14,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh '''
-                echo "Deploying the project..."
-                ibmcloud login --apikey bWF0FEf9Yr3Pf8-PtVod7zEYtjz-ufQmQAlVXrD7BpMe -r us-south
-                ibmcloud cos upload --bucket my-html-project-bucket --key index.html --file index.html
-                ibmcloud cos upload --bucket my-html-project-bucket --key other-file.html --file other-file.html
-                '''
+                // Replace with the appropriate deployment command for your environment
+                sh 'ibmcloud login --apikey bWF0FEf9Yr3Pf8-PtVod7zEYtjz-ufQmQAlVXrD7BpMe'
+                sh 'ibmcloud cos object-put --bucket my-html-project-bucket --key index.html --file path/to/local/index.html'
             }
         }
     }
